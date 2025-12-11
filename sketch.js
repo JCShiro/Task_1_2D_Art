@@ -1,27 +1,38 @@
-//GLOBAL VARIABLES
+console.log("sketch.js is linked")
+console.log(test_variable)
+//=========GLOBAL VARIABLES=========\\
 let first = true;
 
-//MAIN CODE
-//Setup function, only called once. 
+//=========MAIN CODE=========\\
+//Setup function, only called once.
 function setup() {
   //creates a canvas 700x700px
-  createCanvas(700, 700);
+  const canvas = createCanvas(700, 700);
 
+  canvas.parent("canvas")
 }
 
 //Draw function. called endlessley (unless noLoop is used)
 function draw() {
   //Mouse co-ordinates
-  let xPos = mouseX
-  let yPos = mouseY
+  let xPos = mouseX;
+  let yPos = mouseY;
   // Console log for testing
   // console.log("X: " +xPos+ " Y: " +yPos);
 
   //Sets background color of the canvas
-  background(1); 
+  background(1);
+  //calls the function that creates the grid
+  drawSquare();
+}
 
+//=========Functions=========\\
+/**
+ * Creates the squares that make up the grid
+ */
+function drawSquare() {
   //sets the color of the squares
-  fill(95, 158, 160);
+  fill(primaryRed, primaryGreen, primaryBlue);
   //loop to create squares on the x-axis
   for (x = 0; x < 10; x++) {
     //loop to create squares on the y-axis

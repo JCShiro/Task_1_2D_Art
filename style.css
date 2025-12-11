@@ -1,8 +1,21 @@
-html, body {
+html,
+body {
   margin: 500;
   padding: 0;
 }
 
 canvas {
   display: block;
+}
+
+#container {
+  display: flex;
+}
+
+#slider_box {
+  margin-left: 50px;
+}
+
+.slider {
+  width: 400px;
 }

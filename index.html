@@ -2,17 +2,51 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Sketch</title>
 
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="style.css" />
 
+    <script src="script.js" defer></script>
     <script src="libraries/p5.min.js"></script>
     <script src="libraries/p5.sound.min.js"></script>
   </head>
 
   <body>
-    <script src="sketch.js"></script>
+    <div id="container">
+      <article id="canvas">
+        <script src="sketch.js" defer></script>
+      </article>
+      <article id="slider_box">
+        <h1>Red</h1>
+        <input
+          id="red_primary"
+          class="slider"
+          type="range"
+          min="0"
+          max="255"
+          value="95"
+        />
+        <h1>Green</h1>
+        <input
+          id="green_primary"
+          class="slider"
+          type="range"
+          min="0"
+          max="255"
+          value="160"
+        />
+        <h1>Blue</h1>
+        <input
+          id="blue_primary"
+          class="slider"
+          type="range"
+          min="0"
+          max="255"
+          value="158"
+        />
+      </article>
+    </div>
   </body>
 </html>
