@@ -2,10 +2,14 @@ console.log("sketch.js is linked");
 console.log(test_variable);
 //=========GLOBAL VARIABLES=========\\
 let first = true;
+let squaresIndex = 0;
 //Array of square co-ordinates
 let squares = [];
 //Array of circle co-ordinates
 let circles = [];
+
+let xPos = 0;
+let yPos = 0;
 
 //=========MAIN CODE=========\\
 //Setup function, only called once.
@@ -19,7 +23,9 @@ function setup() {
   console.log(squares);
 }
 
-//Draw function. called endlessley (unless noLoop is used)
+/**
+ * Loops endlessley, what makes the canvas work
+ */
 function draw() {
   //Mouse co-ordinates
   let xPos = mouseX;
@@ -29,10 +35,9 @@ function draw() {
 
   //Sets background color of the canvas
   background(1);
-  //calls the function that creates the grid
-  // drawSquare();
-  //makes the squares
-  drawSquares(x, y);
+  //calls the function that draws the squares
+  drawSquares();
+  // mouseClicked();
 }
 
 //=========Functions=========\\
@@ -57,11 +62,31 @@ function createSquares() {
   // first = false;
 }
 // }
-
-function drawSquares(x, y) {
+/**
+ * Draws the squares onto the canvas
+ */
+function drawSquares() {
   for (let s of squares) {
     //sets the color of the squares
     fill(primaryRed, primaryGreen, primaryBlue);
     square(s.x, s.y, 70, 10);
   }
+}
+
+// function changeCircle() {
+//   for (let i = 0; i < squares.length; i++) {
+//     mouseClicked();
+//   }
+// }
+
+function mouseClicked() {
+  console.log("mouse clicked");
+  for (let i = 0; i < squares.length; i++)
+    if (xPos == squares[i].x) {
+      if (yPos == squares[i].y) {
+        fill(1);
+        circle(squares[i].x, squares[i].y, 70);
+        // console.log("mouse clicked");
+      }
+    }
 }
