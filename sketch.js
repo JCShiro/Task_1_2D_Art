@@ -37,7 +37,8 @@ function draw() {
   background(1);
   //calls the function that draws the squares
   drawSquares();
-  // mouseClicked();
+  
+  drawCircles();
 }
 
 //=========Functions=========\\
@@ -81,12 +82,26 @@ function drawSquares() {
 
 function mouseClicked() {
   console.log("mouse clicked");
-  for (let i = 0; i < squares.length; i++)
-    if (xPos == squares[i].x) {
-      if (yPos == squares[i].y) {
-        fill(1);
-        circle(squares[i].x, squares[i].y, 70);
+  for (let i = 0; i < squares.length; i++) {
+    // console.log(i);
+    if (xPos >= squares[i].x && xPos <= squares[i].x + 70) {
+      if (yPos >= squares[i].y && yPos <= squares[i].y + 70) {
+        // fill(1);
+        // circle(squares[i].x, squares[i].y, 70);
+        // console.log(squares[i].x, squares[i].y);
+        circles.push({ x: squares[i].x, y: squares[i].y });
+        console.log(circles);
+        squares.splice(i, 1);
+        console.log(squares);
         // console.log("mouse clicked");
       }
     }
+  }
+}
+
+drawCircles = () => {
+  for (let c of circles) {
+    fill(255);
+    circle(c.x + 35, c.y + 35, 70);
+  }
 }
