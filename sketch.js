@@ -28,8 +28,8 @@ function setup() {
  */
 function draw() {
   //Mouse co-ordinates
-  let xPos = mouseX;
-  let yPos = mouseY;
+  xPos = mouseX;
+  yPos = mouseY;
   // Console log for testing
   // console.log("X: " +xPos+ " Y: " +yPos);
 
@@ -80,6 +80,9 @@ function drawSquares() {
 //   }
 // }
 
+/**
+ * Function that deletes the square and replaces it with a circle
+ */
 function mouseClicked() {
   console.log("mouse clicked");
   for (let i = 0; i < squares.length; i++) {
