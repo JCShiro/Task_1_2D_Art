@@ -104,7 +104,7 @@ function mouseClicked() {
 
 drawCircles = () => {
   for (let c of circles) {
-    fill(255);
+    fill(secondaryRed, secondaryGreen, secondaryBlue);
     circle(c.x + 35, c.y + 35, 70);
   }
 }

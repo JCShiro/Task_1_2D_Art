@@ -12,7 +12,17 @@ canvas {
   display: flex;
 }
 
+#primary_slider_box {
+  margin-left: 50px;
+}
+
+#secondary_slider_box {
+  margin-left: 50px;
+}
+
 #slider_box {
+  display: flex;
+  flex-direction: column;
   margin-left: 50px;
 }
 

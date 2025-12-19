@@ -18,8 +18,9 @@
       <article id="canvas">
         <script src="sketch.js" defer></script>
       </article>
-      <article id="slider_box">
-        <h1> Primary Red</h1>
+      <div id slider_box>
+      <article id="primary_slider_box">
+        <h1>Primary Red</h1>
         <input
           id="red_primary"
           class="slider"
@@ -47,6 +48,36 @@
           value="158"
         />
       </article>
+      <article id="secondary_slider_box">
+        <h1>Secondary Red</h1>
+        <input
+          id="red_secondary"
+          class="slider"
+          type="range"
+          min="0"
+          max="255"
+          value="255"
+        />
+        <h1>Secondary Green</h1>
+        <input
+          id="green_secondary"
+          class="slider"
+          type="range"
+          min="0"
+          max="255"
+          value="255"
+        />
+        <h1>Secondary Blue</h1>
+        <input
+          id="blue_secondary"
+          class="slider"
+          type="range"
+          min="0"
+          max="255"
+          value="255"
+        />
+      </article>
+      </div>
     </div>
   </body>
 </html>
