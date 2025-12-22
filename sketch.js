@@ -1,5 +1,5 @@
 console.log("sketch.js is linked");
-console.log(test_variable);
+// console.log(test_variable);
 //=========GLOBAL VARIABLES=========\\
 let first = true;
 let squaresIndex = 0;
@@ -20,7 +20,7 @@ function setup() {
   canvas.parent("canvas");
 
   createSquares();
-  console.log(squares);
+  // console.log(squares);
 }
 
 /**
@@ -37,7 +37,7 @@ function draw() {
   background(1);
   //calls the function that draws the squares
   drawSquares();
-  
+
   drawCircles();
 }
 
@@ -84,7 +84,7 @@ function drawSquares() {
  * Function that deletes the square and replaces it with a circle
  */
 function mouseClicked() {
-  console.log("mouse clicked");
+  // console.log("mouse clicked");
   for (let i = 0; i < squares.length; i++) {
     // console.log(i);
     if (xPos >= squares[i].x && xPos <= squares[i].x + 70) {
@@ -93,18 +93,20 @@ function mouseClicked() {
         // circle(squares[i].x, squares[i].y, 70);
         // console.log(squares[i].x, squares[i].y);
         circles.push({ x: squares[i].x, y: squares[i].y });
-        console.log(circles);
+        // console.log(circles);
         squares.splice(i, 1);
-        console.log(squares);
+        // console.log(squares);
         // console.log("mouse clicked");
       }
     }
   }
 }
-
+/**
+ * Draws the circles onto the canvas
+ */
 drawCircles = () => {
   for (let c of circles) {
     fill(secondaryRed, secondaryGreen, secondaryBlue);
     circle(c.x + 35, c.y + 35, 70);
   }
-}
+};
