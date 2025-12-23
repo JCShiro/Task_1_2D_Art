@@ -21,21 +21,27 @@ let secondaryBlue = 255;
 //=========Main Code=========\\
 primary_red_slider.oninput = () => {
   colorPicker();
+  backgroundColor();
 };
 primary_green_slider.oninput = () => {
   colorPicker();
+  backgroundColor();
 };
 primary_blue_slider.oninput = () => {
   colorPicker();
+  backgroundColor();
 };
 secondary_red_slider.oninput = () => {
   colorPicker2();
+  backgroundColor();
 };
 secondary_green_slider.oninput = () => {
   colorPicker2();
+  backgroundColor();
 };
 secondary_blue_slider.oninput = () => {
   colorPicker2();
+  backgroundColor();
 };
 /**
  * Changes the color variables when sliders are changed
@@ -61,4 +67,9 @@ function colorPicker2() {
     "Blue:",
     secondaryBlue
   );
+}
+
+function backgroundColor() {
+  document.getElementById("primary_slider_box").style.backgroundColor = `rgb(${primaryRed}, ${primaryGreen}, ${primaryBlue})`;
+  document.getElementById("secondary_slider_box").style.backgroundColor = `rgb(${secondaryRed}, ${secondaryGreen}, ${secondaryBlue})`;
 }
