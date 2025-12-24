@@ -48,28 +48,28 @@ secondary_blue_slider.oninput = () => {
  */
 function colorPicker() {
   //   console.log("function called"); //console for debugging
+  //Set the primary color variables to the slider values
   primaryRed = primary_red_slider.value;
   primaryGreen = primary_green_slider.value;
   primaryBlue = primary_blue_slider.value;
-  console.log("Red:", primaryRed, "Green:", primaryGreen, "Blue:", primaryBlue);
+  // console.log("Red:", primaryRed, "Green:", primaryGreen, "Blue:", primaryBlue); //Debugging log
 }
+
 
 function colorPicker2() {
   //   console.log("function called"); //console for debugging
+  //Set the secondary color variables to the slider values
   secondaryRed = secondary_red_slider.value;
   secondaryGreen = secondary_green_slider.value;
   secondaryBlue = secondary_blue_slider.value;
-  console.log(
-    "Red:",
-    secondaryRed,
-    "Green:",
-    secondaryGreen,
-    "Blue:",
-    secondaryBlue
-  );
+  // console.log("Red:", secondaryRed, "Green:", secondaryGreen, "Blue:",secondaryBlue); //Debugging log
 }
 
 function backgroundColor() {
-  document.getElementById("primary_slider_box").style.backgroundColor = `rgb(${primaryRed}, ${primaryGreen}, ${primaryBlue})`;
-  document.getElementById("secondary_slider_box").style.backgroundColor = `rgb(${secondaryRed}, ${secondaryGreen}, ${secondaryBlue})`;
+  document.getElementById(
+    "primary_slider_box"
+  ).style.backgroundColor = `rgb(${primaryRed}, ${primaryGreen}, ${primaryBlue})`;
+  document.getElementById(
+    "secondary_slider_box"
+  ).style.backgroundColor = `rgb(${secondaryRed}, ${secondaryGreen}, ${secondaryBlue})`;
 }

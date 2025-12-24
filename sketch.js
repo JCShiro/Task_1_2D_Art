@@ -7,7 +7,7 @@ let squaresIndex = 0;
 let squares = [];
 //Array of circle co-ordinates
 let circles = [];
-
+//Mouse position variables
 let xPos = 0;
 let yPos = 0;
 
@@ -37,7 +37,7 @@ function draw() {
   background(1);
   //calls the function that draws the squares
   drawSquares();
-
+  //calls the function that draws the circles
   drawCircles();
 }
 
@@ -62,23 +62,19 @@ function createSquares() {
   console.log("done loading squares"); //Log for debugging
   // first = false;
 }
-// }
+
 /**
  * Draws the squares onto the canvas
  */
 function drawSquares() {
+  //iterates through the squares array, like using let i=0...
   for (let s of squares) {
     //sets the color of the squares
     fill(primaryRed, primaryGreen, primaryBlue);
+    //draws the squares
     square(s.x, s.y, 70, 10);
   }
 }
-
-// function changeCircle() {
-//   for (let i = 0; i < squares.length; i++) {
-//     mouseClicked();
-//   }
-// }
 
 /**
  * Function that deletes the square and replaces it with a circle
@@ -87,11 +83,10 @@ function mouseClicked() {
   // console.log("mouse clicked");
   for (let i = 0; i < squares.length; i++) {
     // console.log(i);
+    //Checks if the mouse position is within the square boundaries
     if (xPos >= squares[i].x && xPos <= squares[i].x + 70) {
       if (yPos >= squares[i].y && yPos <= squares[i].y + 70) {
-        // fill(1);
-        // circle(squares[i].x, squares[i].y, 70);
-        // console.log(squares[i].x, squares[i].y);
+        //moves the square's co-ordinates to the circles array
         circles.push({ x: squares[i].x, y: squares[i].y });
         // console.log(circles);
         squares.splice(i, 1);
@@ -105,8 +100,11 @@ function mouseClicked() {
  * Draws the circles onto the canvas
  */
 drawCircles = () => {
+  //iterates through the circles array, like using let i=0...
   for (let c of circles) {
+    //sets the color of the circles
     fill(secondaryRed, secondaryGreen, secondaryBlue);
+    //draws the circles
     circle(c.x + 35, c.y + 35, 70);
   }
 };
