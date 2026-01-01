@@ -54,7 +54,7 @@ function createSquares() {
       // creates a square 70px wide at point 0,0 and is
       // looped to create a new square every 70px
       square(0 + 70 * x, 0 + 70 * y, 70, 10);
-      squares.push({ x: 70 * x, y: 70 * y });
+      squares.push({ x: 70 * x, y: 70 * y, type: "Square" });
     }
   }
   //console log to check the squares are loaded successfully. For testing
@@ -83,20 +83,14 @@ function mouseClicked() {
   // console.log("mouse clicked");
   for (let i = 0; i < squares.length; i++) {
     // console.log(i);
-    //Checks if the mouse position is within the square boundaries
-    if (xPos >= squares[i].x && xPos <= squares[i].x + 70) {
-      if (yPos >= squares[i].y && yPos <= squares[i].y + 70) {
-        //moves the square's co-ordinates to the circles array
-        circles.push({ x: squares[i].x, y: squares[i].y });
-        // console.log(circles);
-        squares.splice(i, 1);
-        // console.log(squares);
-        // console.log("mouse clicked");
-      }
+    if (squares[i].type === "Square") {
+      fromCircle(i);
+    } else if(circles[i].type === "Circle"){
+      fromSquare(i);
     }
   }
 }
-/**
+/*
  * Draws the circles onto the canvas
  */
 drawCircles = () => {
@@ -108,3 +102,29 @@ drawCircles = () => {
     circle(c.x + 35, c.y + 35, 70);
   }
 };
+function fromCircle(i) {
+  if (xPos >= circles[i].x && xPos <= circles[i].x + 70) {
+    if (yPos >= circles[i].y && yPos <= circles[i].y + 70) {
+      //moves the square's co-ordinates to the circles array
+      circles.push({ x: squares[i].x, y: squares[i].y, type: "Circle" });
+      console.log(squares);
+      squares.splice(i, 1);
+      console.log(circles);
+      // console.log("mouse clicked");
+    }
+  }
+}
+
+function fromSquare(i) {
+  //Checks if the mouse position is within the square boundaries
+  if (xPos >= squares[i].x && xPos <= squares[i].x + 70) {
+    if (yPos >= squares[i].y && yPos <= squares[i].y + 70) {
+      //moves the square's co-ordinates to the circles array
+      circles.push({ x: squares[i].x, y: squares[i].y, type: "Circle" });
+      console.log(circles);
+      squares.splice(i, 1);
+      console.log(squares);
+      // console.log("mouse clicked");
+    }
+  }
+}
