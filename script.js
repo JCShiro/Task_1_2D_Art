@@ -22,26 +22,32 @@ let secondaryBlue = 255;
 primary_red_slider.oninput = () => {
   colorPicker();
   backgroundColor();
+  document.getElementById("red_primary").style.accentColor = `rgb(${primary_red_slider.value}, 0, 0)`;
 };
 primary_green_slider.oninput = () => {
   colorPicker();
   backgroundColor();
+  document.getElementById("green_primary").style.accentColor = `rgb(0, ${primary_green_slider.value}, 0)`;
 };
 primary_blue_slider.oninput = () => {
   colorPicker();
   backgroundColor();
+  document.getElementById("blue_primary").style.accentColor = `rgb(0, 0, ${primary_blue_slider.value})`;
 };
 secondary_red_slider.oninput = () => {
   colorPicker2();
   backgroundColor();
+  document.getElementById("red_secondary").style.accentColor = `rgb(${secondary_red_slider.value}, 0, 0)`;
 };
 secondary_green_slider.oninput = () => {
   colorPicker2();
   backgroundColor();
+  document.getElementById("green_secondary").style.accentColor = `rgb(0, ${secondary_green_slider.value}, 0)`;
 };
 secondary_blue_slider.oninput = () => {
   colorPicker2();
   backgroundColor();
+  document.getElementById("blue_secondary").style.accentColor = `rgb(0, 0, ${secondary_blue_slider.value})`;
 };
 /**
  * Changes the color variables when sliders are changed

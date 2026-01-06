@@ -82,11 +82,13 @@ function drawSquares() {
 function mouseClicked() {
   // console.log("mouse clicked");
   for (let i = 0; i < squares.length; i++) {
-    // console.log(i);
-    if (squares[i].type === "Square") {
-      fromCircle(i);
-    } else if(circles[i].type === "Circle"){
-      fromSquare(i);
+    // console.log(squares[i].type);
+    if (squares[i].type == "Square") {
+      console.log("if called");
+      toCircle(i);
+    } else{
+      console.log("else called")
+      toSquare(i);
     }
   }
 }
@@ -102,11 +104,12 @@ drawCircles = () => {
     circle(c.x + 35, c.y + 35, 70);
   }
 };
-function fromCircle(i) {
+function toSquare(i) {
+  console.log("toSquare function called");
   if (xPos >= circles[i].x && xPos <= circles[i].x + 70) {
     if (yPos >= circles[i].y && yPos <= circles[i].y + 70) {
       //moves the square's co-ordinates to the circles array
-      circles.push({ x: squares[i].x, y: squares[i].y, type: "Circle" });
+      squares.push({ x: circles[i].x, y: circles[i].y, type: "Square" });
       console.log(squares);
       squares.splice(i, 1);
       console.log(circles);
@@ -115,7 +118,7 @@ function fromCircle(i) {
   }
 }
 
-function fromSquare(i) {
+function toCircle(i) {
   //Checks if the mouse position is within the square boundaries
   if (xPos >= squares[i].x && xPos <= squares[i].x + 70) {
     if (yPos >= squares[i].y && yPos <= squares[i].y + 70) {
