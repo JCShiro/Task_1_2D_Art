@@ -7,6 +7,7 @@ let squaresIndex = 0;
 let squares = [];
 //Array of circle co-ordinates
 let circles = [];
+let shapes = [];
 //Mouse position variables
 let xPos = 0;
 let yPos = 0;
@@ -20,7 +21,7 @@ function setup() {
   canvas.parent("canvas");
 
   createSquares();
-  // console.log(squares);
+  // console.log(shapes);
 }
 
 /**
@@ -35,10 +36,8 @@ function draw() {
 
   //Sets background color of the canvas
   background(1);
-  //calls the function that draws the squares
-  drawSquares();
-  //calls the function that draws the circles
-  drawCircles();
+  //calls the function that draws the shapes
+  drawShapes();
 }
 
 //=========Functions=========\\
@@ -54,25 +53,28 @@ function createSquares() {
       // creates a square 70px wide at point 0,0 and is
       // looped to create a new square every 70px
       square(0 + 70 * x, 0 + 70 * y, 70, 10);
-      squares.push({ x: 70 * x, y: 70 * y, type: "Square" });
+      shapes.push({ x: 70 * x, y: 70 * y, type: "Square" });
     }
   }
-  //console log to check the squares are loaded successfully. For testing
-  // if (first) {
-  console.log("done loading squares"); //Log for debugging
-  // first = false;
 }
+//console log to check the squares are loaded successfully. For testing
+// if (first) {
+console.log("done loading squares"); //Log for debugging
+// first = false;
 
-/**
- * Draws the squares onto the canvas
- */
-function drawSquares() {
-  //iterates through the squares array, like using let i=0...
-  for (let s of squares) {
-    //sets the color of the squares
-    fill(primaryRed, primaryGreen, primaryBlue);
-    //draws the squares
-    square(s.x, s.y, 70, 10);
+function drawShapes() {
+  for (let s of shapes) {
+    if (s.type == "Square") {
+      //sets the color of the squares
+      fill(primaryRed, primaryGreen, primaryBlue);
+      //draws the squares
+      square(s.x, s.y, 70, 10);
+    } else {
+      //sets the color of the circles
+      fill(secondaryRed, secondaryGreen, secondaryBlue);
+      //draws the circles
+      circle(s.x + 35, s.y + 35, 70);
+    }
   }
 }
 
@@ -81,38 +83,32 @@ function drawSquares() {
  */
 function mouseClicked() {
   // console.log("mouse clicked");
-  for (let i = 0; i < squares.length; i++) {
-    // console.log(squares[i].type);
-    if (squares[i].type == "Square") {
-      console.log("if called");
-      toCircle(i);
-    } else{
-      console.log("else called")
-      toSquare(i);
+  for (let i = 0; i < shapes.length; i++) {
+    if (
+      xPos > shapes[i].x &&
+      xPos < shapes[i].x + 70 &&
+      yPos > shapes[i].y &&
+      yPos < shapes[i].y + 70
+    ) {
+      // console.log(shapes[i].type);
+      if (shapes[i].type == "Square") {
+        // console.log("if called");
+        toCircle(i);
+      } else {
+        // console.log("else called");
+        toSquare(i);
+      }
     }
   }
 }
-/*
- * Draws the circles onto the canvas
- */
-drawCircles = () => {
-  //iterates through the circles array, like using let i=0...
-  for (let c of circles) {
-    //sets the color of the circles
-    fill(secondaryRed, secondaryGreen, secondaryBlue);
-    //draws the circles
-    circle(c.x + 35, c.y + 35, 70);
-  }
-};
+
 function toSquare(i) {
-  console.log("toSquare function called");
-  if (xPos >= circles[i].x && xPos <= circles[i].x + 70) {
-    if (yPos >= circles[i].y && yPos <= circles[i].y + 70) {
+  // console.log("toSquare function called");
+  if (xPos >= shapes[i].x && xPos <= shapes[i].x + 70) {
+    if (yPos >= shapes[i].y && yPos <= shapes[i].y + 70) {
       //moves the square's co-ordinates to the circles array
-      squares.push({ x: circles[i].x, y: circles[i].y, type: "Square" });
-      console.log(squares);
-      squares.splice(i, 1);
-      console.log(circles);
+      shapes[i].type = "Square";
+      console.log(shapes);
       // console.log("mouse clicked");
     }
   }
@@ -120,13 +116,11 @@ function toSquare(i) {
 
 function toCircle(i) {
   //Checks if the mouse position is within the square boundaries
-  if (xPos >= squares[i].x && xPos <= squares[i].x + 70) {
-    if (yPos >= squares[i].y && yPos <= squares[i].y + 70) {
+  if (xPos >= shapes[i].x && xPos <= shapes[i].x + 70) {
+    if (yPos >= shapes[i].y && yPos <= shapes[i].y + 70) {
       //moves the square's co-ordinates to the circles array
-      circles.push({ x: squares[i].x, y: squares[i].y, type: "Circle" });
-      console.log(circles);
-      squares.splice(i, 1);
-      console.log(squares);
+      shapes[i].type = "Circle";
+      console.log(shapes);
       // console.log("mouse clicked");
     }
   }
